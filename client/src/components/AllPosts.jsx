@@ -1,20 +1,19 @@
+import { useState } from "react";
+import exempleDonneesBlog from "../data/exampleData"; 
+import PostDetails from "./PostDetails";
 
 
-const AllPosts = () => (
-  <div className="all-post">
-    <div className="blog-list-item">
-      <div className="blog-list-item-title">Post Title 1</div>
-      <div className="blog-list-item-byline">
-        <span className="blog-list-item-byline-author"> John Doe, </span>
-        a day ago
-      </div>
-      <div className="blog-list-item-lede">
-        <img src="https://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder.gif" alt="no content" />
-      </div>
+
+const AllPosts = () => {
+  const [posts, setPosts] = useState(exempleDonneesBlog);
+
+  return (
+    <div className="all-post">
+      {posts.map((post) => (
+        <PostDetails post={post} />
+      ))}
     </div>
-
-
-  </div>
-);
+  )
+};
 
 export default AllPosts;
